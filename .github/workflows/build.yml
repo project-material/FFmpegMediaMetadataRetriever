@@ -1,0 +1,69 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "native/**"
+      - "core/**"
+      - ".github/workflows/build.yml"
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build artifacts
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      
+      - name: Set up Java JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+        with:
+          cmdline-tools-version: '13114758'
+
+      - name: Set up Android NDK
+        uses: HoshinoSuzumi/setup-ndk@v1
+        with:
+          ndk-version: 'r27d'
+
+      - name: Generate local.properties
+        run: |
+          echo "sdk.dir=$ANDROID_HOME" > local.properties
+          echo "ndk.dir=$ANDROID_NDK_HOME" >> local.properties
+
+      - name: Grant execute permission to gradlew
+        run: chmod +x ./gradlew
+
+      - name: Build modules
+        run: ./gradlew :core:assembleRelease :native:assembleRelease
+
+      - name: Upload core artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: core-artifacts
+          path: |
+            core/build/outputs/**/*.aar
+            core/build/outputs/**/*.apk
+            core/build/libs/**/*.jar
+
+      - name: Upload native artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: native-artifacts
+          path: |
+            native/build/outputs/**/*.aar
+            native/build/outputs/**/*.apk
+            native/build/libs/**/*.jar
