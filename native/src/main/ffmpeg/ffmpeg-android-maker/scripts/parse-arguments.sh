@@ -17,17 +17,17 @@ FFMPEG_GPL_ENABLED=false
 SUPPORTED_LIBRARIES_FREE=(
   "libaom"
   "libdav1d"
-#  "libmp3lame"
-#  "libopus"
-#  "libtwolame"
-#  "libspeex"
+  "libmp3lame"
+  "libopus"
+  "libtwolame"
+  "libspeex"
   "libvpx"
-#  "libwebp"
-#  "libfreetype"
-#  "libfribidi"
-#  "mbedtls"
+  "libwebp"
+  "libfreetype"
+  "libfribidi"
+  "mbedtls"
   "libbluray"
-#  "libxml2"
+  "libxml2"
 )
 
 # All GPL libraries that are supported
@@ -84,33 +84,33 @@ for argument in "$@"; do
   --enable-libdav1d | -dav1d)
     EXTERNAL_LIBRARIES+=("libdav1d")
     ;;
-#  --enable-libmp3lame | -mp3lame | -lame)
-#    EXTERNAL_LIBRARIES+=("libmp3lame")
-#    ;;
-#  --enable-libopus | -opus)
-#    EXTERNAL_LIBRARIES+=("libopus")
-#    ;;
-#  --enable-libwebp | -webp)
-#    EXTERNAL_LIBRARIES+=("libwebp")
-#    ;;
-#  --enable-libwavpack | -wavpack)
-#    EXTERNAL_LIBRARIES+=("libwavpack")
-#    ;;
-#  --enable-libtwolame | -twolame)
-#    EXTERNAL_LIBRARIES+=("libtwolame")
-#    ;;
-#  --enable-libspeex | -speex)
-#    EXTERNAL_LIBRARIES+=("libspeex")
-#    ;;
+  --enable-libmp3lame | -mp3lame | -lame)
+    EXTERNAL_LIBRARIES+=("libmp3lame")
+    ;;
+  --enable-libopus | -opus)
+    EXTERNAL_LIBRARIES+=("libopus")
+    ;;
+  --enable-libwebp | -webp)
+    EXTERNAL_LIBRARIES+=("libwebp")
+    ;;
+  --enable-libwavpack | -wavpack)
+    EXTERNAL_LIBRARIES+=("libwavpack")
+    ;;
+  --enable-libtwolame | -twolame)
+    EXTERNAL_LIBRARIES+=("libtwolame")
+    ;;
+  --enable-libspeex | -speex)
+    EXTERNAL_LIBRARIES+=("libspeex")
+    ;;
   --enable-libvpx | -vpx)
     EXTERNAL_LIBRARIES+=("libvpx")
     ;;
-#  --enable-libfreetype | -freetype)
-#    EXTERNAL_LIBRARIES+=("libfreetype")
-#    ;;
-#  --enable-libfribidi | -fribidi)
-#    EXTERNAL_LIBRARIES+=("libfribidi")
-#    ;;
+  --enable-libfreetype | -freetype)
+    EXTERNAL_LIBRARIES+=("libfreetype")
+    ;;
+  --enable-libfribidi | -fribidi)
+    EXTERNAL_LIBRARIES+=("libfribidi")
+    ;;
   --enable-libx264 | -x264)
     EXTERNAL_LIBRARIES+=("libx264")
     FFMPEG_GPL_ENABLED=true
@@ -119,15 +119,15 @@ for argument in "$@"; do
     EXTERNAL_LIBRARIES+=("libx265")
     FFMPEG_GPL_ENABLED=true
     ;;
-#  --enable-mbedtls | -mbedtls)
-#    EXTERNAL_LIBRARIES+=("mbedtls")
-#    ;;
+  --enable-mbedtls | -mbedtls)
+    EXTERNAL_LIBRARIES+=("mbedtls")
+    ;;
   --enable-libbluray | -bluray)
     EXTERNAL_LIBRARIES+=("libbluray")
     ;; 
-#  --enable-libxml2 | -xml2)
-#    EXTERNAL_LIBRARIES+=("libxml2")
-#    ;;
+  --enable-libxml2 | -xml2)
+    EXTERNAL_LIBRARIES+=("libxml2")
+    ;;
   --enable-all-free | -all-free)
     EXTERNAL_LIBRARIES+=" ${SUPPORTED_LIBRARIES_FREE[@]}"
     ;;
