@@ -82,10 +82,11 @@ echo $PATH
   --disable-outdevs \
   --disable-devices \
   --disable-filters \
-  --enable-protocol=file \
+  --enable-encoder=png \
+  --enable-protocol=file,http,https,mmsh,mmst,pipe,rtmp,rtmps,rtmpt,rtmpts,rtp,tls \
   --disable-debug \
   --disable-asm \
-  --disable-openssl \
+  --enable-openssl \
   $ADDITIONAL_COMPONENTS || exit 1
 
 ${MAKE_EXECUTABLE} clean
